@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	function loggedIn() {
+    	return request.auth!=null
+    }
+    function isAdmin() {
+      return loggedIn() && (request.auth.uid in ['YOUR_UID_HERE']);
+    }
+     
+    
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /{col}/{doc} {
+    	allow read: if col in ['discounts', 'products', 'collections', 'posts', 'shipping_methods', 'store_fronts', 'tags'];
+    }
+
+		match /users/{userId} {
+    	allow read, write: if loggedIn() && request.auth.uid == userId;
+      allow create: if loggedIn();
+    }
+    
+    match /orders/{orderId} {
+    	// always allow if you know the document id
+    	allow get: if true;
+      // list only your
+      // allow list: if loggedIn() && (resource.data.contact.uid==request.auth.uid);
+      allow list: if loggedIn() && (('uid:' + request.auth.uid) in resource.data.search);
+    }
+    
+   	
+  }
+}
