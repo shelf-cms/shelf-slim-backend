@@ -43,7 +43,7 @@ Open `.firebaserc` and paste your `projectId` into `YOUR_PROJECT_ID_HERE`
 ### 6. Edit `firestore.rules`
 Open `firestore.rules` and paste your `uid` into `YOUR_UID_HERE`
 
-### 7. Edit `storage.rules` (Optional, if you prefere other storage services)
+### 7. Edit `storage.rules` (Optional, if you prefer other storage services)
 Open `storage.rules` and paste your `uid` into `YOUR_UID_HERE`
 
 ### 8. Deploy Firestore rules and indexes and storage rules
@@ -64,7 +64,7 @@ firebase deploy --only functions
 ### 10. Update your backend @ `shelf`
 - Login to [SHELF](https://shelf-cms.io)
 - **Settings** > Update `Backend URL` with your local or production url.
-- 💡 For local dev, make sure your browser does not block requests to localhost (Brave browser does it and it can be disabled)
+>💡 For local dev, make sure your browser does not block requests to localhost (Brave browser does it and it can be disabled)
 
 ### 11. Tinker with the backend
 💡 Few suggestions:
@@ -76,3 +76,13 @@ firebase deploy --only functions
 - Modify the logic of events at `functions/index.js`
 - Add a new payment gateway by inspecting `functions/gateways` folder and reading [The SHELF Gateways Docs 📖](https://www.shelf-cms.io/docs/backend/payments)
 
+
+# 👋 Contribution Guide
+Any contribution is welcome.
+Here are some, that will be cool to add:
+- More Payment Gateways
+- Automatic bootstrap script
+- Better docs
+- Anything you feel is an improvement
+
+Also, feel free to fork and make it your own, for your own projects
