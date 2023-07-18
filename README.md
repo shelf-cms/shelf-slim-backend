@@ -46,22 +46,27 @@ Open `firestore.rules` and paste your `uid` into `YOUR_UID_HERE`
 ### 7. Edit `storage.rules` (Optional, if you prefere other storage services)
 Open `storage.rules` and paste your `uid` into `YOUR_UID_HERE`
 
-### 8. That's it
-You can now tinker with it:
-
-```
-// For local dev
-firebase serve 
-
-// or, for production
-firebase deploy
+### 8. Deploy Firestore rules and indexes and storage rules
+```bash
+firebase deploy --only firestore,storage
 ```
 
-### 9. Update your backend @ `shelf`
+### 9. Tinker with `functions` before deploy
+```bash
+firebase emulators:start --only functions
+```
+
+If, you are ready to deploy the functions
+```bash
+firebase deploy --only functions
+```
+
+### 10. Update your backend @ `shelf`
 - Login to [SHELF](https://shelf-cms.io)
-- **Settings** > Update `Backend URL`
+- **Settings** > Update `Backend URL` with your local or production url.
+- 💡 For local dev, make sure your browser does not block requests to localhost (Brave browser does it and it can be disabled)
 
-### 10. Tinker with the backend
+### 11. Tinker with the backend
 💡 Few suggestions:
 - Edit `functions/src/actions/send-mail.js` with your own:
   - `STORE_NAME`
